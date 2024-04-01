@@ -17,3 +17,6 @@ Various player actions emit sound of varying volume. The volume of the sound eff
 Short-range navigation towards the player by sniffing out the player's trail. Precise (0m).
 
 The player emits a short "smell trail" -  breadcrumbs that the enemy is able to pick up on when within a short distance. Certain actions can raise or lower the rate of decay of these breadcrumbs; Odorizers (dust cloud, toxic waste, flower bed) lower the rate of decay, and Deodorizers (water) raise the rate of decay.
+
+## Third Party Assets
+Royalty-free assets are used in this project for demonstration purposes, namely sound effects and textures. Sound effects are sourced from [Pixabay](https://pixabay.com/). Textures are sourced from [FreeStylized](https://freestylized.com/).
