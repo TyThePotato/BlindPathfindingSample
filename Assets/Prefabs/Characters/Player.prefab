@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7432186461337504291}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,9 @@ MonoBehaviour:
   speed: 4
   speedEasing: 8
   turnSmoothing: 8
+  sneaking: 0
+  sneakingMultiplier: 0.5
+  footstepThreshold: 0.25
 --- !u!1 &8045160494190070875
 GameObject:
   m_ObjectHideFlags: 0

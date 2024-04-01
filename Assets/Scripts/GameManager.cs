@@ -35,6 +35,7 @@ namespace PathfindingGame {
             _cameraScript = _camera.GetComponent<FollowCamera>();
 
             _enemy = Instantiate(enemyPrefab);
+            _enemy.transform.position = enemySpawnpoint.position;
             _enemyController = _enemy.GetComponent<EnemyController>();
             
             // Focus player
