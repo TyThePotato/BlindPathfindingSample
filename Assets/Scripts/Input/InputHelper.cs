@@ -28,6 +28,7 @@ namespace PathfindingGame.Input {
         public static bool IsSneaking => _iag.General.Sneak.IsPressed();
 
         public static InputAction SneakAction => _iag.General.Sneak;
+        public static InputAction ThrowAction => _iag.General.Throw;
 
     }
 

@@ -12,6 +12,10 @@ namespace PathfindingGame.Sensory {
         private static SensoryHelper _instance;
 
         public GameObject soundEffectPrefab;
+        public GameObject smellCrumbPrefab;
+
+        public float baseSmellRadius = 2.0f;
+        public float baseSmellDecay = 5.0f; // seconds
 
         public static SoundEvent NewSound = new SoundEvent();
         
@@ -20,14 +24,17 @@ namespace PathfindingGame.Sensory {
         public AudioClip[] grassFootstepAudioClips;
         public float grassFootstepStrength;
         
-        public AudioClip[] leavesFootstepAudioClips;
-        public float leavesFootstepStrength;
+        public AudioClip[] metalFootstepAudioClips;
+        public float metalFootstepStrength;
         
         public AudioClip[] waterFootstepAudioClips;
         public float waterFootstepStrength;
 
         public AudioClip[] playerAudioClips;
         public float playerAudioStrength;
+
+        public AudioClip impactAudioClip;
+        public float impactAudioStrength;
         
         // SMELLS //
         // ...
@@ -45,6 +52,7 @@ namespace PathfindingGame.Sensory {
             _instance = this; // singleton
         }
         
+        // AUDIO //
         
         public static void PlayFootstepSound(FootstepType type, Vector3 position, float strengthMultiplier) {
             AudioClip clip = null;
@@ -55,9 +63,9 @@ namespace PathfindingGame.Sensory {
                     clip = GetRandomAudioClip(_instance.grassFootstepAudioClips);
                     strength = _instance.grassFootstepStrength;
                     break;
-                case FootstepType.Leaves:
-                    clip = GetRandomAudioClip(_instance.leavesFootstepAudioClips);
-                    strength = _instance.leavesFootstepStrength;
+                case FootstepType.Metal:
+                    clip = GetRandomAudioClip(_instance.metalFootstepAudioClips);
+                    strength = _instance.metalFootstepStrength;
                     break;
                 case FootstepType.Water:
                     clip = GetRandomAudioClip(_instance.waterFootstepAudioClips);
@@ -76,14 +84,19 @@ namespace PathfindingGame.Sensory {
             PlaySoundGeneric(clip, position, _instance.playerAudioStrength);
         }
 
+        public static void PlayImpactSound(Vector3 position) {
+            PlaySoundGeneric(_instance.impactAudioClip, position, _instance.impactAudioStrength);
+        }
+
 
         public static FootstepType GetFootstepMaterial(Vector3 rayOrigin, Vector3 rayDir) {
             if (Physics.Raycast(rayOrigin, rayDir, out var hit)) {
                 var tag = hit.transform.tag;
                 return tag switch {
                     "Grass" => FootstepType.Grass,
-                    "Leaves" => FootstepType.Leaves,
-                    "Water" => FootstepType.Water
+                    "Metal" => FootstepType.Metal,
+                    "Water" => FootstepType.Water,
+                    _ => FootstepType.Grass
                 };
             }
 
@@ -105,7 +118,7 @@ namespace PathfindingGame.Sensory {
             if (_instance.visualize) {
                 var vis = Instantiate(_instance.audioVisualizationPrefab);
                 vis.transform.position = position;
-                vis.transform.localScale = Vector3.one * strength * AudioVisualizationRange;
+                vis.transform.localScale = Vector3.one * (strength * AudioVisualizationRange);
                 Destroy(vis, 1.0f);
             }
             
@@ -113,6 +126,28 @@ namespace PathfindingGame.Sensory {
             NewSound.Invoke(position, strength);
         }
 
+        // SMELL //
+
+        public static void CreateSmellCrumb(Vector3 position, float strength) {
+            var go = Instantiate(_instance.smellCrumbPrefab);
+            go.transform.position = position;
+
+            // set range
+            go.GetComponent<SphereCollider>().radius = _instance.baseSmellRadius * strength;
+            
+            // set decay
+            Destroy(go, _instance.baseSmellDecay * strength);
+
+            if (_instance.visualize) {
+                var vis = Instantiate(_instance.smellVisualizationPrefab);
+                vis.transform.position = position;
+                vis.transform.localScale = Vector3.one * (_instance.baseSmellRadius * strength * 2f);
+                Destroy(vis, _instance.baseSmellDecay * strength);
+            }
+        }
+        
+        // UTIL //
+        
         private static AudioClip GetRandomAudioClip(AudioClip[] clips) {
             var i = Random.Range(0, clips.Length);
             return clips[i];
@@ -121,7 +156,7 @@ namespace PathfindingGame.Sensory {
         public enum FootstepType {
 
             Grass,
-            Leaves,
+            Metal,
             Water
 
         }

@@ -13,13 +13,14 @@ namespace PathfindingGame.Player {
         public float speedEasing = 4.0f;
         public float turnSmoothing = 3.0f;
 
-        public bool sneaking = false;
+        public bool isSneaking = false;
         public float sneakingMultiplier = 0.5f;
-
-        public float footstepThreshold = 0.25f;
         
         private CharacterController _controller;
 
+        public Vector3 TargetVelocity => _velocity;
+        public Vector3 RealVelocity => _realVelocity;
+        
         private Vector3 _velocity; // current charactercontroller velocity
         private Vector3 _realVelocity; // real gameobject velocity
         private Vector3 _lastPos; // position last frame; used to calculate real velocity
@@ -39,7 +40,6 @@ namespace PathfindingGame.Player {
             _lastPos = transform.position;
             
             DoMovement();
-            DoFootsteps();
         }
 
         private void DoMovement() {
@@ -48,7 +48,7 @@ namespace PathfindingGame.Player {
             var targetVelocity = new Vector3(inputVector.x, 0f, inputVector.y).normalized;
             targetVelocity *= speed;
 
-            if (sneaking)
+            if (isSneaking)
                 targetVelocity *= sneakingMultiplier;
             
             // ease velocity
@@ -75,31 +75,13 @@ namespace PathfindingGame.Player {
                 transform.rotation = Quaternion.Slerp(transform.rotation, dir, smooth);
             }
         }
-
-        private void DoFootsteps() {
-            // dont create footsteps if player is not moving or trying to move
-            if (_realVelocity == Vector3.zero || _velocity == Vector3.zero)
-                return;
-            
-            _footstepProgress += Time.deltaTime * _realVelocity.sqrMagnitude / (speed * speed);
-            
-            if (_footstepProgress >= footstepThreshold) {
-                
-                // determine footstep sound properties
-                var stepType = SensoryHelper.GetFootstepMaterial(transform.position, Vector3.down);
-                var strength = sneaking ? 0.25f : 1.0f; // sound effect strength
-                SensoryHelper.PlayFootstepSound(stepType, transform.position, strength);
-                
-                _footstepProgress = 0.0f; // reset
-            }
-        }
         
         private void BeginSneaking() {
-            sneaking = true;
+            isSneaking = true;
         }
 
         private void EndSneaking() {
-            sneaking = false;
+            isSneaking = false;
         }
 
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PathfindingGame.AI;
@@ -18,6 +19,8 @@ namespace PathfindingGame {
         public GameObject enemyPrefab;
         
         // References
+        public static GameManager Instance;
+        
         private GameObject _player;
         
         private GameObject _camera;
@@ -25,6 +28,10 @@ namespace PathfindingGame {
 
         private GameObject _enemy;
         private EnemyController _enemyController;
+
+        void Awake() {
+            Instance = this;
+        }
 
         void Start() {
             // spawn prefabs
@@ -40,6 +47,13 @@ namespace PathfindingGame {
             
             // Focus player
             _cameraScript.SetTarget(_player.transform);
+        }
+
+        public void EndGame() {
+            Debug.Log("GAME END");
+            
+            // pause editor
+            Debug.Break();
         }
 
     }

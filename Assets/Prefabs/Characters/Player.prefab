@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 2698930542000589560}
   - component: {fileID: 4717150342266589520}
   - component: {fileID: 7432186461337504291}
+  - component: {fileID: -8809308637886069707}
+  - component: {fileID: 3448165177173153542}
+  - component: {fileID: -4932195227041409439}
+  - component: {fileID: 2829915362487334373}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -75,9 +79,75 @@ MonoBehaviour:
   speed: 4
   speedEasing: 8
   turnSmoothing: 8
-  sneaking: 0
+  isSneaking: 0
   sneakingMultiplier: 0.5
+--- !u!114 &-8809308637886069707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252779001540701790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56370471d0ac9644b9b5c4d4310ad865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   footstepThreshold: 0.25
+  smellCrumbThreshold: 1
+  isSneaking: 0
+  smellStrength: 1
+--- !u!114 &3448165177173153542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252779001540701790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dc3988e99734d409b38d6352bb43e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4932195227041409439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252779001540701790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141ba63ec61bf0a45932dfa3ac5c2005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwablePrefabs:
+  - {fileID: 1226246538231416080, guid: 6439e5d9b44503c40a5fe3ce1e769e31, type: 3}
+  throwStrength: 500
+  throwHeight: 200
+  hasThrowable: 1
+  currentThrowable: 0
+--- !u!135 &2829915362487334373
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252779001540701790}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.25
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8045160494190070875
 GameObject:
   m_ObjectHideFlags: 0

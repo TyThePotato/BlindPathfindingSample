@@ -48,7 +48,7 @@ namespace PathfindingGame.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Throw"",
                     ""type"": ""Button"",
                     ""id"": ""9fdffc0b-0569-4fd2-aa54-7ecf07aec935"",
                     ""expectedControlType"": ""Button"",
@@ -131,7 +131,7 @@ namespace PathfindingGame.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -144,7 +144,7 @@ namespace PathfindingGame.Input
             m_General = asset.FindActionMap("General", throwIfNotFound: true);
             m_General_Movement = m_General.FindAction("Movement", throwIfNotFound: true);
             m_General_Sneak = m_General.FindAction("Sneak", throwIfNotFound: true);
-            m_General_Jump = m_General.FindAction("Jump", throwIfNotFound: true);
+            m_General_Throw = m_General.FindAction("Throw", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -208,14 +208,14 @@ namespace PathfindingGame.Input
         private List<IGeneralActions> m_GeneralActionsCallbackInterfaces = new List<IGeneralActions>();
         private readonly InputAction m_General_Movement;
         private readonly InputAction m_General_Sneak;
-        private readonly InputAction m_General_Jump;
+        private readonly InputAction m_General_Throw;
         public struct GeneralActions
         {
             private @InputActionsGeneral m_Wrapper;
             public GeneralActions(@InputActionsGeneral wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_General_Movement;
             public InputAction @Sneak => m_Wrapper.m_General_Sneak;
-            public InputAction @Jump => m_Wrapper.m_General_Jump;
+            public InputAction @Throw => m_Wrapper.m_General_Throw;
             public InputActionMap Get() { return m_Wrapper.m_General; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -231,9 +231,9 @@ namespace PathfindingGame.Input
                 @Sneak.started += instance.OnSneak;
                 @Sneak.performed += instance.OnSneak;
                 @Sneak.canceled += instance.OnSneak;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @Throw.started += instance.OnThrow;
+                @Throw.performed += instance.OnThrow;
+                @Throw.canceled += instance.OnThrow;
             }
 
             private void UnregisterCallbacks(IGeneralActions instance)
@@ -244,9 +244,9 @@ namespace PathfindingGame.Input
                 @Sneak.started -= instance.OnSneak;
                 @Sneak.performed -= instance.OnSneak;
                 @Sneak.canceled -= instance.OnSneak;
-                @Jump.started -= instance.OnJump;
-                @Jump.performed -= instance.OnJump;
-                @Jump.canceled -= instance.OnJump;
+                @Throw.started -= instance.OnThrow;
+                @Throw.performed -= instance.OnThrow;
+                @Throw.canceled -= instance.OnThrow;
             }
 
             public void RemoveCallbacks(IGeneralActions instance)
@@ -268,7 +268,7 @@ namespace PathfindingGame.Input
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnSneak(InputAction.CallbackContext context);
-            void OnJump(InputAction.CallbackContext context);
+            void OnThrow(InputAction.CallbackContext context);
         }
     }
 }

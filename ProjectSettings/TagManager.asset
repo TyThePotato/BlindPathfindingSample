@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grass
-  - Leaves
   - Water
+  - Enemy
+  - SmellCrumb
+  - Metal
   layers:
   - Default
   - TransparentFX
