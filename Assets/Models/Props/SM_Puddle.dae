@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 4.1.0 commit date:2024-03-25, commit time:20:42, hash:40a5e739e270</authoring_tool>
+    </contributor>
+    <created>2024-04-07T16:25:11</created>
+    <modified>2024-04-07T16:25:11</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="M_Water-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="M_Water-material" name="M_Water">
+      <instance_effect url="#M_Water-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="WaterPuddleMesh-mesh" name="WaterPuddleMesh">
+      <mesh>
+        <source id="WaterPuddleMesh-mesh-positions">
+          <float_array id="WaterPuddleMesh-mesh-positions-array" count="78">-2.141935 -1.299128 0 2.197308 -1.148262 0 2.291929 1.580428 0 -1.023971 -1.702661 0 -0.4353356 1.568392 0 -2.5 0 0 2.568629 0.2034079 0 -1.023971 0.491086 0 1.27689 -1.702661 0 1.250823 1.860233 0 1.301382 0.1515488 0.0178523 0.3622915 1.77997 0 0.1509514 0.1515488 0.0178523 0.1264592 -1.810902 0 -2.390421 -0.05849498 0.0178523 -2.067471 -1.23022 0.0178523 1.247999 -1.614885 0.0178523 2.11997 -1.089667 0.0178523 2.476082 0.2066391 0.0178523 2.214602 1.507917 0.0178523 -1.004142 -1.614032 0.0178523 0.3780066 1.690926 0.0178523 -0.3748281 1.49123 0.0178523 -0.9619001 0.4167849 0.0178523 0.1264592 -1.720408 0.0178523 1.242941 1.769057 0.0178523</float_array>
+          <technique_common>
+            <accessor source="#WaterPuddleMesh-mesh-positions-array" count="26" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="WaterPuddleMesh-mesh-normals">
+          <float_array id="WaterPuddleMesh-mesh-normals-array" count="78">0 0 1 0.08197253 0.07686787 0.9936659 0.009202718 0.1064526 0.9942752 -0.08299893 -0.07680648 0.9935854 -0.04451292 0.05328345 0.9975869 -0.09294545 0.04961585 0.9944343 0.08971965 -0.06797623 0.9936446 0.03398716 -0.1032589 0.9940737 0 0 1 0 -0.1029756 0.994684 -0.01781386 0.1009364 0.9947334 -0.069633 0.08879935 0.9936125 -0.02283746 -0.1020757 0.9945145 -0.1271942 -0.1177046 0.9848693 0.05930137 -0.1801727 0.9818458 0.1442309 -0.109277 0.9834918 0.1891816 -0.006605029 0.9819199 0.1211398 0.1135961 0.9861142 -0.0421108 -0.1882238 0.9812231 -0.03366476 0.1907503 0.9810612 -0.1105259 0.1409485 0.9838281 -0.116258 0.1391649 0.9834212 0.1089602 -0.003804206 0.9940388 -0.1254987 0.06699323 0.9898293 0 -0.1935443 0.9810916 0.01648926 0.1907537 0.9814995</float_array>
+          <technique_common>
+            <accessor source="#WaterPuddleMesh-mesh-normals-array" count="26" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="WaterPuddleMesh-mesh-map-0">
+          <float_array id="WaterPuddleMesh-mesh-map-0-array" count="228">0.3374596 0.7499217 0.08779555 0.9544639 0.01851129 0.7683445 0.5467114 0.0623365 0.2434888 0.3100526 0.3104764 0.0205363 0.5965149 0.8878384 0.3374596 0.7499217 0.6836067 0.7067702 0.6836067 0.7067702 0.3161885 0.5238426 0.6836068 0.4844176 0.3374596 0.7499217 0.0178731 0.5969255 0.3161885 0.5238426 0.3161885 0.5238426 0.04319691 0.4452884 0.2434888 0.3100526 0.6417977 0.2642022 0.3161885 0.5238426 0.2434888 0.3100526 0.3104764 0.0205363 0.5588763 0.04642897 0.5467114 0.0623365 0.5965149 0.8878384 0.7013905 0.7108247 0.6094599 0.9019532 0.08779555 0.9544639 0.3506995 0.9999163 0.07497549 0.9710007 0.5467114 0.0623365 0.6588482 0.2586666 0.6417977 0.2642022 0.04319691 0.4452884 8.37608e-5 0.5954837 0.02691441 0.4348244 0.04319691 0.4452884 0.2277397 0.2992284 0.2434888 0.3100526 0.5965149 0.8878384 0.3506995 0.9999163 0.3483534 0.9817889 0.3104764 0.0205363 0.2277397 0.2992284 0.2969551 8.37376e-5 0.6836067 0.7067702 0.7013905 0.4827444 0.7013905 0.7108247 0.08779555 0.9544639 7.39389e-4 0.7715792 0.01851129 0.7683445 0.01851129 0.7683445 8.37608e-5 0.5954837 0.0178731 0.5969255 0.6417977 0.2642022 0.7013905 0.4827444 0.6836068 0.4844176 0.3374596 0.7499217 0.3483534 0.9817889 0.08779555 0.9544639 0.5467114 0.0623365 0.6417977 0.2642022 0.2434888 0.3100526 0.5965149 0.8878384 0.3483534 0.9817889 0.3374596 0.7499217 0.6836067 0.7067702 0.3374596 0.7499217 0.3161885 0.5238426 0.3374596 0.7499217 0.01851129 0.7683445 0.0178731 0.5969255 0.3161885 0.5238426 0.0178731 0.5969255 0.04319691 0.4452884 0.6417977 0.2642022 0.6836068 0.4844176 0.3161885 0.5238426 0.3104764 0.0205363 0.2969551 8.37376e-5 0.5588763 0.04642897 0.5965149 0.8878384 0.6836067 0.7067702 0.7013905 0.7108247 0.08779555 0.9544639 0.3483534 0.9817889 0.3506995 0.9999163 0.5467114 0.0623365 0.5588763 0.04642897 0.6588482 0.2586666 0.04319691 0.4452884 0.0178731 0.5969255 8.37608e-5 0.5954837 0.04319691 0.4452884 0.02691441 0.4348244 0.2277397 0.2992284 0.5965149 0.8878384 0.6094599 0.9019532 0.3506995 0.9999163 0.3104764 0.0205363 0.2434888 0.3100526 0.2277397 0.2992284 0.6836067 0.7067702 0.6836068 0.4844176 0.7013905 0.4827444 0.08779555 0.9544639 0.07497549 0.9710007 7.39389e-4 0.7715792 0.01851129 0.7683445 7.39389e-4 0.7715792 8.37608e-5 0.5954837 0.6417977 0.2642022 0.6588482 0.2586666 0.7013905 0.4827444</float_array>
+          <technique_common>
+            <accessor source="#WaterPuddleMesh-mesh-map-0-array" count="114" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="WaterPuddleMesh-mesh-vertices">
+          <input semantic="POSITION" source="#WaterPuddleMesh-mesh-positions"/>
+        </vertices>
+        <triangles material="M_Water-material" count="38">
+          <input semantic="VERTEX" source="#WaterPuddleMesh-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#WaterPuddleMesh-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#WaterPuddleMesh-mesh-map-0" offset="2" set="0"/>
+          <p>10 0 0 19 1 1 25 2 2 15 3 3 23 4 4 14 5 5 17 6 6 10 0 7 16 7 8 16 7 9 12 8 10 24 9 11 10 0 12 21 10 13 12 8 14 12 8 15 22 11 16 23 4 17 20 12 18 12 8 19 23 4 20 14 5 21 0 13 22 15 3 23 17 6 24 8 14 25 1 15 26 19 1 27 6 16 28 2 17 29 15 3 30 3 18 31 20 12 32 22 11 33 11 19 34 4 20 35 22 11 36 7 21 37 23 4 38 17 6 39 6 16 40 18 22 41 14 5 42 7 21 43 5 23 44 16 7 45 13 24 46 8 14 47 19 1 48 9 25 49 25 2 50 25 2 51 11 19 52 21 10 53 20 12 54 13 24 55 24 9 56 10 0 57 18 22 58 19 1 59 15 3 60 20 12 61 23 4 62 17 6 63 18 22 64 10 0 65 16 7 66 10 0 67 12 8 68 10 0 69 25 2 70 21 10 71 12 8 72 21 10 73 22 11 74 20 12 75 24 9 76 12 8 77 14 5 78 5 23 79 0 13 80 17 6 81 16 7 82 8 14 83 19 1 84 18 22 85 6 16 86 15 3 87 0 13 88 3 18 89 22 11 90 21 10 91 11 19 92 22 11 93 4 20 94 7 21 95 17 6 96 1 15 97 6 16 98 14 5 99 23 4 100 7 21 101 16 7 102 24 9 103 13 24 104 19 1 105 2 17 106 9 25 107 25 2 108 9 25 109 11 19 110 20 12 111 3 18 112 13 24 113</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="WaterPuddle" name="WaterPuddle" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#WaterPuddleMesh-mesh" name="WaterPuddle">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="M_Water-material" target="#M_Water-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

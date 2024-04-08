@@ -35,6 +35,8 @@ namespace PathfindingGame.Sensory {
 
         public AudioClip impactAudioClip;
         public float impactAudioStrength;
+
+        public AudioClip keyAudioClip;
         
         // SMELLS //
         // ...
@@ -88,6 +90,9 @@ namespace PathfindingGame.Sensory {
             PlaySoundGeneric(_instance.impactAudioClip, position, _instance.impactAudioStrength);
         }
 
+        public static void PlayKeySound(Vector3 position) {
+            PlaySoundGeneric(_instance.keyAudioClip, position, 0.5f);
+        }
 
         public static FootstepType GetFootstepMaterial(Vector3 rayOrigin, Vector3 rayDir) {
             if (Physics.Raycast(rayOrigin, rayDir, out var hit)) {

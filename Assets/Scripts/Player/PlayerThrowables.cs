@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathfindingGame.Input;
+using PathfindingGame.Sensory.Obstacles;
 
 namespace PathfindingGame.Player {
 
@@ -14,17 +15,56 @@ namespace PathfindingGame.Player {
 
         public bool hasThrowable;
         public byte currentThrowable;
+
+        private GroundItem _targetItem;
         
         void Start() {
             // register input event
-            InputHelper.ThrowAction.performed += _ => ThrowObject();
+            InputHelper.ThrowAction.performed += _ => ItemButtonPressed();
+        }
+
+        public void SetGrabTarget(GroundItem target) {
+            if (hasThrowable) return;
+            _targetItem = target;
+            
+            UIManager.SetItemPickupText(target.itemID);
+        }
+
+        public void ClearGrabTarget(GroundItem self) {
+            if (hasThrowable) return;
+            
+            if (_targetItem == self) {
+                _targetItem = null;
+                UIManager.SetNoCurrentItem();
+            }
+        }
+
+        void ItemButtonPressed() {
+            if (hasThrowable) {
+                ThrowObject();
+            } else if (_targetItem != null) {
+                GrabObject();
+            }
+        }
+
+        void GrabObject() {
+            if (_targetItem == null)
+                return;
+
+            UIManager.SetCurrentItemText(_targetItem.itemID);
+
+            currentThrowable = _targetItem.itemID;
+            hasThrowable = true;
+
+            Destroy(_targetItem.gameObject);
+            _targetItem = null;
         }
 
         void ThrowObject() {
             if (!hasThrowable)
                 return;
             
-            Debug.Log("Throwing!");
+            UIManager.SetNoCurrentItem();
 
             // TODO: error checking/protection against invalid index
             var go = Instantiate(throwablePrefabs[currentThrowable]);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathfindingGame.Game;
 
 namespace PathfindingGame.Player {
 
@@ -10,7 +11,7 @@ namespace PathfindingGame.Player {
         private void OnTriggerEnter(Collider other) {
             if (other.CompareTag("Enemy")) {
                 // END GAME
-                GameManager.Instance.EndGame();
+                GameManager.CatchPlayer();
             }
         }
 

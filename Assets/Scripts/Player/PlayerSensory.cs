@@ -48,6 +48,10 @@ namespace PathfindingGame.Player { // PathfindingGame.Sensory?
                 var strength = isSneaking ? 0.25f : 1.0f; // sound effect strength
                 SensoryHelper.PlayFootstepSound(stepType, transform.position, strength);
                 
+                // reset smell if stepping in water
+                if (stepType == SensoryHelper.FootstepType.Water)
+                    smellStrength = 1.0f;
+                
                 _footstepProgress = 0.0f; // reset
             }
         }

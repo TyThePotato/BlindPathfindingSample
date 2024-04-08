@@ -59,7 +59,8 @@ namespace PathfindingGame.Player {
 
             _velocity = Vector3.Lerp(_velocity, targetVelocity, smooth);
             
-            // TODO: Gravity?
+            // gravity
+            _velocity.y = -9f; // TODO: easing
 
             _controller.Move(_velocity * Time.deltaTime);
 

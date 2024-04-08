@@ -23,6 +23,8 @@ namespace PathfindingGame.Player {
         public void SetTarget(Transform newTarget) {
             target = newTarget;
             _targetSet = true;
+            
+            TrackTarget(true);
         }
 
         private void Update() {
@@ -30,7 +32,7 @@ namespace PathfindingGame.Player {
                 TrackTarget();
         }
 
-        private void TrackTarget() {
+        private void TrackTarget(bool instant = false) {
             // calculate target camera position
             var targetPosition = target.position;
             targetPosition += Vector3.up * height;
@@ -40,9 +42,11 @@ namespace PathfindingGame.Player {
             transform.LookAt(target);
 
             // keep lerp amount <= 1 to avoid overshooting at low framerates
+            // if instant is true, set to 1 to instantly reach lerp destination
             var smooth = smoothingAmount * Time.deltaTime;
-            if (smooth > 1.0f)
+            if (smooth > 1.0f || instant)
                 smooth = 1.0f;
+                    
             
             transform.position = Vector3.Lerp(transform.position, targetPosition, smooth);
         }

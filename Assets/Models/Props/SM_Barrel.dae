@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 4.1.0 commit date:2024-03-25, commit time:20:42, hash:40a5e739e270</authoring_tool>
+    </contributor>
+    <created>2024-04-07T16:36:22</created>
+    <modified>2024-04-07T16:36:22</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="M_Barrel-effect">
+      <profile_COMMON>
+        <newparam sid="T_Barrel_D_png-surface">
+          <surface type="2D">
+            <init_from>T_Barrel_D_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="T_Barrel_D_png-sampler">
+          <sampler2D>
+            <source>T_Barrel_D_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="T_Barrel_D_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.5</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="T_Barrel_D_png" name="T_Barrel_D_png">
+      <init_from>/P:/College/SGD-288%20Portfolio%20Design/Projects/BlindPathfinding/Textures/Custom/T_Barrel_D.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="M_Barrel-material" name="M_Barrel">
+      <instance_effect url="#M_Barrel-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="BarrelMesh-mesh" name="BarrelMesh">
+      <mesh>
+        <source id="BarrelMesh-mesh-positions">
+          <float_array id="BarrelMesh-mesh-positions-array" count="48">0 0.5 0 0 0.5 1.5 0.3535534 0.3535534 0 0.3535534 0.3535534 1.5 0.5 0 0 0.5 0 1.5 0.3535534 -0.3535534 0 0.3535534 -0.3535534 1.5 0 -0.5 0 0 -0.5 1.5 -0.3535534 -0.3535534 0 -0.3535534 -0.3535534 1.5 -0.5 0 0 -0.5 0 1.5 -0.3535534 0.3535534 0 -0.3535534 0.3535534 1.5</float_array>
+          <technique_common>
+            <accessor source="#BarrelMesh-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="BarrelMesh-mesh-normals">
+          <float_array id="BarrelMesh-mesh-normals-array" count="72">-8.33777e-6 1 0 0.7071126 0.707101 0 8.33777e-6 1 0 0.707101 0.7071126 0 1 -8.17347e-6 0 1 8.17347e-6 0 0.707101 -0.7071126 0 0.7071126 -0.707101 0 -8.33777e-6 -1 0 8.33777e-6 -1 0 -0.7071126 -0.707101 0 -0.707101 -0.7071126 0 -1 8.17347e-6 0 0 0 1 0 0 1 0 0 1 -1 -8.17347e-6 0 -0.707101 0.7071126 0 -0.7071126 0.707101 0 0 0 -1 2.87797e-7 0 1 0 0 1 0 0 1 -2.87797e-7 0 1</float_array>
+          <technique_common>
+            <accessor source="#BarrelMesh-mesh-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="BarrelMesh-mesh-map-0">
+          <float_array id="BarrelMesh-mesh-map-0-array" count="168">1 1 0.875 0.5 1 0.5 0.875 1 0.75 0.5 0.875 0.5 0.75 1 0.625 0.5 0.75 0.5 0.625 1 0.5 0.5 0.625 0.5 0.5 1 0.375 0.5 0.5 0.5 0.375 1 0.25 0.5 0.375 0.5 0.00999999 0.25 0.25 0.00999999 0.49 0.25 0.25 1 0.125 0.5 0.25 0.5 0.125 1 0 0.5 0.125 0.5 0.9197056 0.08029437 0.5802944 0.08029437 0.5802944 0.4197056 1 1 0.875 1 0.875 0.5 0.875 1 0.75 1 0.75 0.5 0.75 1 0.625 1 0.625 0.5 0.625 1 0.5 1 0.5 0.5 0.5 1 0.375 1 0.375 0.5 0.375 1 0.25 1 0.25 0.5 0.49 0.25 0.4197056 0.4197056 0.25 0.49 0.25 0.49 0.08029437 0.4197056 0.00999999 0.25 0.00999999 0.25 0.08029437 0.08029437 0.25 0.00999999 0.25 0.00999999 0.4197056 0.08029437 0.49 0.25 0.49 0.25 0.25 0.49 0.00999999 0.25 0.25 1 0.125 1 0.125 0.5 0.125 1 0 1 0 0.5 0.5802944 0.4197056 0.75 0.49 0.9197056 0.4197056 0.9197056 0.4197056 0.99 0.25 0.9197056 0.08029437 0.9197056 0.08029437 0.75 0.00999999 0.5802944 0.08029437 0.5802944 0.08029437 0.51 0.25 0.5802944 0.4197056 0.5802944 0.4197056 0.9197056 0.4197056 0.9197056 0.08029437</float_array>
+          <technique_common>
+            <accessor source="#BarrelMesh-mesh-map-0-array" count="84" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="BarrelMesh-mesh-vertices">
+          <input semantic="POSITION" source="#BarrelMesh-mesh-positions"/>
+        </vertices>
+        <triangles material="M_Barrel-material" count="28">
+          <input semantic="VERTEX" source="#BarrelMesh-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#BarrelMesh-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#BarrelMesh-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 1 1 0 2 2 3 3 3 4 4 4 2 1 5 5 5 6 6 6 7 4 4 8 7 7 9 8 8 10 6 6 11 9 9 12 10 10 13 8 8 14 11 11 15 12 12 16 10 10 17 13 13 18 9 14 19 5 15 20 13 16 21 14 17 22 12 12 23 15 18 24 0 2 25 14 17 26 6 19 27 10 19 28 14 19 29 1 0 30 3 3 31 2 1 32 3 3 33 5 5 34 4 4 35 5 5 36 7 7 37 6 6 38 7 7 39 9 9 40 8 8 41 9 9 42 11 11 43 10 10 44 11 11 45 13 16 46 12 12 47 5 15 48 3 20 49 1 21 50 1 21 51 15 22 52 13 13 53 13 13 54 11 23 55 9 14 56 9 14 57 7 22 58 5 15 59 5 15 60 1 21 61 13 13 62 13 16 63 15 18 64 14 17 65 15 18 66 1 0 67 0 2 68 14 19 69 0 19 70 2 19 71 2 19 72 4 19 73 6 19 74 6 19 75 8 19 76 10 19 77 10 19 78 12 19 79 14 19 80 14 19 81 2 19 82 6 19 83</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Barrel" name="Barrel" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#BarrelMesh-mesh" name="Barrel">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="M_Barrel-material" target="#M_Barrel-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
